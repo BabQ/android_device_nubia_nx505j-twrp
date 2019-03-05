@@ -38,7 +38,7 @@ BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom user_debug=23 msm
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_TAGS_OFFSET := 0x01E00000
 BOARD_RAMDISK_OFFSET := 0x02000000
-TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/recovery/kernel
+TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilt/kernel
 
 # Encryption
 TARGET_HW_DISK_ENCRYPTION := true
@@ -67,7 +67,6 @@ TW_TARGET_USES_QCOM_BSP := true
 TW_THEME := portrait_hdpi
 TW_INCLUDE_CRYPTO := true
 TW_IGNORE_MISC_WIPE_DATA := true
-TARGET_CRYPTFS_HW_PATH := vendor/qcom/opensource/cryptfs_hw
 TW_INCLUDE_NTFS_3G := true
 TW_NO_SCREEN_BLANK := true
 TW_DEVICE_VERSION := 1
