@@ -17,26 +17,34 @@
 LOCAL_PATH := device/nubia/nx505j
 
 # Architecture
-TARGET_ARCH := arm
-TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
+TARGET_CPU_SMP := true
+TARGET_ARCH := arm
+TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_VARIANT := krait
+ARCH_ARM_HAVE_ARMV7A := true
+ARCH_ARM_HAVE_NEON := true
+ARCH_ARM_HAVE_TLS_REGISTER := true
+ARCH_ARM_HAVE_VFP := true
 
 # Platform
 TARGET_BOARD_PLATFORM := msm8974
-TARGET_BOARD_PLATFORM_GPU := qcom-adreno330
+TARGET_BOOTLOADER_BOARD_NAME := MSM8974
+TARGET_BOOTLOADER_NAME := nubia
 
 # Bootloader
-TARGET_BOOTLOADER_BOARD_NAME := msm8974
+TARGET_BOOTLOADER_BOARD_NAME := MSM8974
 TARGET_NO_BOOTLOADER := true
+TARGET_NO_RADIOIMAGE := true
 
 # Kernel
-BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom user_debug=23 msm_rtb.filter=0x37 ehci-hcd.park=3 androidboot.bootdevice=msm_sdcc.1 androidboot.selinux=permissive
+#BOARD_KERNEL_SEPARATED_DT := true
+BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048
-BOARD_KERNEL_TAGS_OFFSET := 0x01e00000
-BOARD_RAMDISK_OFFSET := 0x02000000
+BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x2000000 --tags_offset 0x01E00000 --dt $(LOCAL_PATH)/prebuilt/dt.img
+TARGET_KERNEL_ARCH := arm
 TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilt/kernel
 
 # Encryption
@@ -69,7 +77,10 @@ TW_IGNORE_MISC_WIPE_DATA := true
 TW_INCLUDE_NTFS_3G := true
 TW_NO_SCREEN_BLANK := true
 TW_DEVICE_VERSION := 1
-TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
+TW_INTERNAL_STORAGE_PATH := "/data/media"		
+TW_INTERNAL_STORAGE_MOUNT_POINT := "/data"	
+TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
+RECOVERY_GRAPHICS_USE_LINELENGTH := true
 
 # Disable Mouse Cursor
 TW_INPUT_BLACKLIST := "hbtp_vm"
